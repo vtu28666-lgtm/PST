@@ -1,0 +1,67 @@
+import java.util.*;
+import java.io.*;
+class Result {
+    public static List<Integer> compareTriplets(List<Integer> a, List<Integer> b) {
+        int alice = 0;
+        int bob = 0;
+        for (int i = 0; i < 3; i++) {
+            if (a.get(i) > b.get(i)) {
+                alice++;
+            } else if (a.get(i) < b.get(i)) {
+                bob++;
+            }
+        }
+        return Arrays.asList(alice, bob);
+    }
+}
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+        String[] aTemp = bufferedReader.readLine().split(" ");
+        List<Integer> a = new ArrayList<>();
+        for (String value : aTemp) {
+            a.add(Integer.parseInt(value));
+        }
+        String[] bTemp = bufferedReader.readLine().split(" ");
+        List<Integer> b = new ArrayList<>();
+
+        for (String value : bTemp) {
+            b.add(Integer.parseInt(value));
+        }
+        List<Integer> result = Result.compareTriplets(a, b);
+
+        for (int i = 0; i < result.size(); i++) {
+            bufferedWriter.write(String.valueOf(result.get(i)));
+
+            if (i != result.size() - 1) {
+                bufferedWriter.write(" ");
+            }
+        }
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
+
+
+
+
+Input (stdin)
+5 6 7
+3 6 10
+Your Output (stdout)
+1 1
+Expected Output
+1 1
+
+
+Input (stdin)
+17 28 30
+99 16 8
+Your Output (stdout)
+2 1
+Expected Output
+
+
